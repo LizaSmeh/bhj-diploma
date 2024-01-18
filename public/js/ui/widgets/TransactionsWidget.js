@@ -12,6 +12,11 @@ class TransactionsWidget {
    * необходимо выкинуть ошибку.
    * */
   constructor( element ) {
+    if(!element) {
+      throw new Error('Элемент не существует');
+    }
+    this.element = element;
+    this.registerEvents()
 
   }
   /**
@@ -20,7 +25,22 @@ class TransactionsWidget {
    * При нажатии вызывает Modal.open() для
    * экземпляра окна
    * */
+    
   registerEvents() {
+        const btns = Array.from(this.element.querySelectorAll('button'));
+    btns.forEach(el => {
+      if(el.classList.contains('create-income-button')){
+        el.addEventListener('click', event => {
+          event.preventDefault();
+          App.getModal('newIncome').open();
+        });
+      }else {
+        el.addEventListener('click', event => {
+          event.preventDefault();
+          App.getModal('newExpense').open();
+        });
+      }
+    })
 
   }
 }
