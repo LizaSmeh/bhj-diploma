@@ -30,12 +30,11 @@ class Modal {
     const elementBtns = Array.from(this.element.querySelectorAll('button'));
 
     elementBtns.forEach(el => {
-      if(el.dataset.dismiss = 'modal'){
+      if(el.hasAttribute('data-dismiss') && el.dataset.dismiss === 'modal') {
 
         el.addEventListener('click', event => {
-          
           event.preventDefault();
-          this.onClose();
+          this.onClose(el);
         })
       }
     })

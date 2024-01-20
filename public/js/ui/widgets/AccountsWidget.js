@@ -116,8 +116,7 @@ class AccountsWidget {
    * */
   renderItem(data){
     data.forEach(el => {
-      const item = this.getAccountHTML(el);
-      this.element.insertAdjacentElement("beforeEnd", item);
+      this.element.insertAdjacentHTML("beforeEnd", this.getAccountHTML(el));
     })
 
 

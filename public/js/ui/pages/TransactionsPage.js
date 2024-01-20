@@ -40,7 +40,7 @@ class TransactionsPage {
       if(event.target.closest('.remove-account')){
         this.removeAccount();
       } else if(event.target.closest('.transaction__remove')){
-        this.removeTransaction({id: e.target.closest('.transaction__remove').dataset.id});
+        this.removeTransaction({id: event.target.closest('.transaction__remove').dataset.id});
         }
     })
 
@@ -106,7 +106,7 @@ class TransactionsPage {
 
     Account.get(options.account_id, (err, response) => {
       if(response.success && response.data.name) {
-        this.renderTitle(response);
+        this.renderTitle(response.data.name);
       }
     });
 
